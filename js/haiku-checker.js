@@ -36,6 +36,7 @@ export class Haiku {
 
   vowelcount(sentence){
     let vowcount = this.vowelCount;
+    alert("vowcountbefore: " + this.vowelCount);
     sentence.forEach(function(element){
       let vcount = element.match(/[aeiouy]/ig);
       if (vcount != null) {
@@ -52,21 +53,22 @@ export class Haiku {
       vowcount += (vcount - dipcount);
     });
     this.vowelCount = vowcount;
+    alert("vowcountafter: " + this.vowelCount);
     return this.vowelCount;
   }
 
-  doubleConstCount(sentence){
-    alert(sentence);
-    let dcCount = 0;
-    sentence.forEach(function(element){
-      let res = element.match(/([aeiouy]{1})+([bcdfghjklmnpqrstvwxz]{2})+([aeiouy]{1})/ig);
-      if (res != null) {
-        dcCount += res.length;
-      }
-    });
-    this.vowelCount += dcCount;
-    return this.vowelCount;
-  }
+  // doubleConstCount(sentence){
+  //   alert("sentence: " + sentence);
+  //   let dcCount = 0;
+  //   sentence.forEach(function(element){
+  //     let res = element.match(/([aeiouy]{1})+([bcdfghjklmnpqrstvwxz]{2})+([aeiouy]{1})/ig);
+  //     if (res != null) {
+  //       dcCount += res.length;
+  //     }
+  //   });
+  //   this.vowelCount += dcCount;
+  //   return this.vowelCount;
+  // }
 
   checker(newHaiku1) {
     var test = newHaiku1.splitter(newHaiku1.input);

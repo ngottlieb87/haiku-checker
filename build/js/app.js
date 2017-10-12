@@ -28,25 +28,6 @@ var Haiku = exports.Haiku = function () {
       this.splitinput = splitarr;
       return this.splitinput;
     }
-
-    // filteronetwo(split) {
-    //   var arr = [];
-    //   var count = 0;
-    //   split.forEach(function(element) {
-    //     if (element.length <= 2) {
-    //       count += 1;
-    //       return;
-    //     } else {
-    //       arr.push(element);
-    //     }
-    //   });
-    //   this.syllables = count;
-    //   this.currentstring = arr;
-    //   console.log("Current String : " + this.currentstring);
-    //   console.log("Number of sylables: " + this.syllables);
-    //   return this.currentstring;
-    // }
-
   }, {
     key: 'silente',
     value: function silente(sentence) {
@@ -71,8 +52,8 @@ var Haiku = exports.Haiku = function () {
   }, {
     key: 'vowelcount',
     value: function vowelcount(sentence) {
-      // sentence = sentence.join(" ");
       var vowcount = this.vowelCount;
+      alert("vowcountbefore: " + this.vowelCount);
       sentence.forEach(function (element) {
         var vcount = element.match(/[aeiouy]/ig);
         if (vcount != null) {
@@ -89,34 +70,30 @@ var Haiku = exports.Haiku = function () {
         vowcount += vcount - dipcount;
       });
       this.vowelCount = vowcount;
+      alert("vowcountafter: " + this.vowelCount);
       return this.vowelCount;
     }
-  }, {
-    key: 'doubleConstCount',
-    value: function doubleConstCount(sentence) {
-      alert(sentence);
-      var dcCount = 0;
-      sentence.forEach(function (element) {
-        var res = element.match(/([aeiouy]{1})+([bcdfghjklmnpqrstvwxz]{2})+([aeiouy]{1})/ig);
-        if (res != null) {
-          dcCount += res.length;
-        }
-      });
-      this.vowelCount += dcCount;
-      return this.vowelCount;
-    }
+
+    // doubleConstCount(sentence){
+    //   alert("sentence: " + sentence);
+    //   let dcCount = 0;
+    //   sentence.forEach(function(element){
+    //     let res = element.match(/([aeiouy]{1})+([bcdfghjklmnpqrstvwxz]{2})+([aeiouy]{1})/ig);
+    //     if (res != null) {
+    //       dcCount += res.length;
+    //     }
+    //   });
+    //   this.vowelCount += dcCount;
+    //   return this.vowelCount;
+    // }
+
   }, {
     key: 'checker',
     value: function checker(newHaiku1) {
       var test = newHaiku1.splitter(newHaiku1.input);
-      // alert("splitter passed");
       var test1 = newHaiku1.silente(test);
-      // alert("silente passed");
       var test2 = newHaiku1.vowelcount(test1);
-      // alert("vowelcount passed");
       var test3 = newHaiku1.doubleConstCount(test1);
-      // alert("doubleConstCount passed");
-      // alert(test3);
       return test3;
     }
     //single// /[aeiouy]+[bcdfghjklmnpqrstvwxz]{1}+[aeiouy]/ig

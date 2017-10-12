@@ -20,12 +20,10 @@ export class Haiku {
     let arr = [];
     let count = this.vowelCount;
     this.splitinput.forEach(function(element) {
-      if (element.length >= 3) {
-        console.log("count in loop: " + count);
+      if (element.length >= 2) {
         count += 1;
         arr.push(element);
-        console.log(arr);
-        return arr;
+        return;
       }
     });
     this.constanantCount = count;
